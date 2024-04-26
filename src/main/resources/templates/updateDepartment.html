@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments Updating</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="p-3 m-2">
+        <div class="card">
+            <div class="card-header">Update Department</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <form class="form-inline" action="/updateDepartment" method="post">
+                        <input class="form-control" type="hidden" name="id" th:value="${department.getId()}">
+                        Name: <input class="form-control" name="title" type="text"
+                                      th:value="${department.getName()}">
+                        Description: <input class="form-control" name="designation" type="text"
+                                            th:value="${department.getDescription()}">
+                        <br>
+                        <input class="btn btn-primary form-control" type="submit" value="Update">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

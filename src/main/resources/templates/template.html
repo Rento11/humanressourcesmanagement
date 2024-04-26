@@ -4,36 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
     <style>
+        /* Custom Styles */
+        .navbar {
+            background-color: #007bff; /* Navbar background color */
+        }
+
+        .navbar-brand {
+            color: #ffffff; /* Navbar brand color */
+        }
+
         .navbar .nav-link {
-            color: #333;
+            color: #ffffff; /* Navbar link color */
             font-weight: bold;
         }
+
         .navbar .nav-link:hover {
-            color: #007bff;
+            color: #f8f9fa; /* Navbar link hover color */
         }
+
+        .card {
+            border-radius: 15px; /* Card border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card box shadow */
+        }
+
         .footer {
-            background-color: #f8f9fa;
-            padding: 10px 0;
+            background-color: #f8f9fa; /* Footer background color */
+            padding: 20px 0; /* Footer padding */
             text-align: center;
             color: #333;
             font-size: 14px;
-        }
-        .full-width {
-            margin-left: 0;
-            margin-right: 0;
+            border-top: 1px solid #dee2e6; /* Footer border */
         }
     </style>
 </head>
 <body>
-<div class="container-fluid full-width">
-    <div class="card">
-        <div class="card-header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Your Logo Here</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{departmentsList}">Departments</a>
                     </li>
@@ -43,29 +62,29 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{positionsList}">Positions</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Manage
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Option 1</a></li>
-                            <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{leaveRequestsList}">Leave Request</a>
                     </li>
                 </ul>
-            </nav>
+            </div>
         </div>
+    </nav>
+
+
+    <div class="card">
         <div class="card-body">
             <section layout:fragment="content"></section>
         </div>
-        <div class="card-footer footer">
-            &copy; Copyright: Rento11 2024
-            <br/> Human Ressources Management - Casablanca - Morocco
-            <br/> Email: contactMA@gmail.com
-        </div>
     </div>
+
+
+    <footer class="footer mt-4">
+        <div class="container">
+            <p>&copy; Copyright: Rento11 2024</p>
+            <p>Human Resources Management - Casablanca - Morocco</p>
+            <p>Email: contactMA@gmail.com</p>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

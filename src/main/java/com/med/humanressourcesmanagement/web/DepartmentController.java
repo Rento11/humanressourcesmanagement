@@ -2,10 +2,12 @@ package com.med.humanressourcesmanagement.web;
 
 import com.med.humanressourcesmanagement.dao.entities.Department;
 import com.med.humanressourcesmanagement.service.DepartmentManager;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +19,7 @@ public class DepartmentController {
     private DepartmentManager departmentManager;
 
     @GetMapping("departmentsList")
-    public String getRooms(Model model, @RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "taille", defaultValue = "3") int taille, @RequestParam(name = "search", defaultValue = "") String keyword){
+    public String getDepartments(Model model, @RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "taille", defaultValue = "3") int taille, @RequestParam(name = "search", defaultValue = "") String keyword){
         Page<Department> departments = departmentManager.searchDepartments(keyword,page, taille);
         model.addAttribute("departments", departments.getContent());
         int[] pages = new int[departments.getTotalPages()];
@@ -30,20 +32,20 @@ public class DepartmentController {
         return "departmentsList";
     }
 
-    @GetMapping("/addRoom")
-    public String addRoomGet(Model model) {
+    @GetMapping("/addDepartment")
+    public String addDepartmentGet(Model model) {
         model.addAttribute("department", new Department());
         return "addDepartment";
     }
 
-//    @PostMapping("/addDepartment")
-//    public String addDepartmentPost(Model model, @Valid Department department, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "addDepartment";
-//        }
-//        departmentManager.addDepartment(department);
-//        return "redirect:/departmentsList";
-//    }
+    @PostMapping("/addDepartment")
+    public String addDepartmentPost(Model model, @Valid Department department, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "addDepartment";
+        }
+        departmentManager.addDepartment(department);
+        return "redirect:/departmentsList";
+    }
 
     @GetMapping("/deleteDepartment")
     public String deleteDepartmentAction(@RequestParam(name = "id") Integer id, Integer page, String search) {
@@ -65,18 +67,15 @@ public class DepartmentController {
         }
     }
 
-//    @PostMapping("/updateDepartment")
-//    public String updateDepartmentPost(Model model, @RequestParam(name = "id") Integer id, @RequestParam(name = "departmentNumber") String departmentNumber, @RequestParam(name = "pricePerNight") double pricePerNight, @RequestParam(name = "isAvailable") boolean isAvailable, @RequestParam(name = "capacity") int capacity) {
-//        Department department = departmentManager.findDepartmentById(id);
-//        department.setDepartmentNumber(departmentNumber);
-//        department.setPricePerNight(pricePerNight);
-//        department.setAvailable(isAvailable);
-//        department.setCapacity(capacity);
-//        if (department != null) {
-//            departmentManager.updateDepartment(department);
-//            return "redirect:/departmentsList";
-//        } else {
-//            return "error";
-//        }
-//    }
+    @PostMapping("/updateDepartment")
+    public String updateDepartmentPost(Model model, @RequestParam(name = "id") Integer id, @RequestParam(name = "departmentNumber") String departmentNumber, @RequestParam(name = "pricePerNight") double pricePerNight, @RequestParam(name = "isAvailable") boolean isAvailable, @RequestParam(name = "capacity") int capacity) {
+        Department department = departmentManager.findDepartmentById(id);
+
+        if (department != null) {
+            departmentManager.updateDepartment(department);
+            return "redirect:/departmentsList";
+        } else {
+            return "error";
+        }
+    }
 }
