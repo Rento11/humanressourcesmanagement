@@ -4,7 +4,7 @@
       layout:decorate="template">
 <head>
     <meta charset="UTF-8">
-    <title>Departments Updating</title>
+    <title>Positions Updating</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
@@ -13,15 +13,15 @@
 <div layout:fragment="content">
     <div class="p-3 m-2">
         <div class="card">
-            <div class="card-header">Departments Updating</div>
+            <div class="card-header">Positions Updating</div>
             <div class="card-body">
-                <div class="form-group">
-                    <form class="form-inline" action="/updateDepartment" method="post">
-                        <input class="form-control" type="hidden" name="id" th:value="${department.getId()}">
+                <div class="form-group"> ° §
+                    <form class="form-inline" action="/updatePosition" method="post">
+                        <input class="form-control" type="hidden" name="id" th:value="${position.getId()}">
                         Name: <input class="form-control" name="title" type="text"
-                                      th:value="${department.getName()}">
+                                     th:value="${position.getName()}">
                         Description: <input class="form-control" name="designation" type="text"
-                                            th:value="${department.getDescription()}">
+                                            th:value="${position.getDescription()}">
                         <br>
                         <input class="btn btn-primary form-control" type="submit" value="Update">
                     </form>

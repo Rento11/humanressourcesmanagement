@@ -68,9 +68,10 @@ public class DepartmentController {
     }
 
     @PostMapping("/updateDepartment")
-    public String updateDepartmentPost(Model model, @RequestParam(name = "id") Integer id, @RequestParam(name = "departmentNumber") String departmentNumber, @RequestParam(name = "pricePerNight") double pricePerNight, @RequestParam(name = "isAvailable") boolean isAvailable, @RequestParam(name = "capacity") int capacity) {
+    public String updateDepartmentPost(Model model, @RequestParam(name = "id") Integer id, @RequestParam(name = "name") String name, @RequestParam(name = "description") String description) {
         Department department = departmentManager.findDepartmentById(id);
-
+        department.setName(name);
+        department.setDescription(description);
         if (department != null) {
             departmentManager.updateDepartment(department);
             return "redirect:/departmentsList";

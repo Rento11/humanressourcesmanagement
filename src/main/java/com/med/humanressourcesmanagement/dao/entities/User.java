@@ -1,9 +1,6 @@
 package com.med.humanressourcesmanagement.dao.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Table(name = "Utilisateur")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
