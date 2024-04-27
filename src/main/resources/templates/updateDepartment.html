@@ -18,9 +18,9 @@
                 <div class="form-group">
                     <form class="form-inline" action="/updateDepartment" method="post">
                         <input class="form-control" type="hidden" name="id" th:value="${department.getId()}">
-                        Name: <input class="form-control" name="title" type="text"
+                        Name: <input class="form-control" name="name" type="text"
                                       th:value="${department.getName()}">
-                        Description: <input class="form-control" name="designation" type="text"
+                        Description: <input class="form-control" name="description" type="text"
                                             th:value="${department.getDescription()}">
                         <br>
                         <input class="btn btn-primary form-control" type="submit" value="Update">
