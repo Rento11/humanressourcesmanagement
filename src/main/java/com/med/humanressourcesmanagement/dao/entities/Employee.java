@@ -3,10 +3,10 @@ package com.med.humanressourcesmanagement.dao.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,14 +14,11 @@ import java.util.Collection;
 @Setter
 @ToString
 public class Employee extends User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private String hireDate;
+    private LocalDate hireDate;
     private double salary;
     @ManyToOne
     private Department department;
