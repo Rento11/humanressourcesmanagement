@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>LeaveRequests Adding</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container" align="center">
+        <form action="/addLeaveRequest" method="post">
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" class="form-control w-50" id="status" name="status">
+                <span class="text-danger" th:errors="${leaveRequest.status}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="startDate" class="form-label">StartDate</label>
+                <input type="date" class="form-control w-50" id="startDate" name="startDate">
+                <span class="text-danger" th:errors="${leaveRequest.startDate}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="endDate" class="form-label">EndDate</label>
+                <input type="date" class="form-control w-50" id="endDate" name="endDate">
+                <span class="text-danger" th:errors="${leaveRequest.endDate}"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary form-control w-50" value="Add">Add</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

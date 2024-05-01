@@ -1,8 +1,10 @@
 package com.med.humanressourcesmanagement;
 
 import com.med.humanressourcesmanagement.dao.entities.Department;
+import com.med.humanressourcesmanagement.dao.entities.LeaveRequest;
 import com.med.humanressourcesmanagement.dao.entities.Position;
 import com.med.humanressourcesmanagement.service.DepartmentManager;
+import com.med.humanressourcesmanagement.service.LeaveRequestManager;
 import com.med.humanressourcesmanagement.service.PositionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,12 +12,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
+
 @SpringBootApplication
 public class HumanressourcesmanagementApplication {
     @Autowired
     DepartmentManager departmentManager;
     @Autowired
     PositionManager positionManager;
+    @Autowired
+    LeaveRequestManager leaveRequestManager;
 
     public static void main(String[] args) {
         SpringApplication.run(HumanressourcesmanagementApplication.class, args);
@@ -44,6 +50,15 @@ public class HumanressourcesmanagementApplication {
             positionManager.addPosition(position2);
             positionManager.addPosition(position3);
             positionManager.addPosition(position4);
+
+            LeaveRequest leaveRequest1 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
+            LeaveRequest leaveRequest2 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
+            LeaveRequest leaveRequest3 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
+            LeaveRequest leaveRequest4 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
+            leaveRequestManager.addLeaveRequest(leaveRequest1);
+            leaveRequestManager.addLeaveRequest(leaveRequest2);
+            leaveRequestManager.addLeaveRequest(leaveRequest3);
+            leaveRequestManager.addLeaveRequest(leaveRequest4);
         };
     }
 }

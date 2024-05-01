@@ -11,10 +11,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+
+@Table(name = "Congé")
+
 public class LeaveRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer leaveId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String status;
