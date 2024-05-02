@@ -1,9 +1,11 @@
 package com.med.humanressourcesmanagement;
 
 import com.med.humanressourcesmanagement.dao.entities.Department;
+import com.med.humanressourcesmanagement.dao.entities.Employee;
 import com.med.humanressourcesmanagement.dao.entities.LeaveRequest;
 import com.med.humanressourcesmanagement.dao.entities.Position;
 import com.med.humanressourcesmanagement.service.DepartmentManager;
+import com.med.humanressourcesmanagement.service.EmployeeManager;
 import com.med.humanressourcesmanagement.service.LeaveRequestManager;
 import com.med.humanressourcesmanagement.service.PositionManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class HumanressourcesmanagementApplication {
     PositionManager positionManager;
     @Autowired
     LeaveRequestManager leaveRequestManager;
+    @Autowired
+    EmployeeManager employeeManager;
 
     public static void main(String[] args) {
         SpringApplication.run(HumanressourcesmanagementApplication.class, args);
@@ -59,6 +63,15 @@ public class HumanressourcesmanagementApplication {
             leaveRequestManager.addLeaveRequest(leaveRequest2);
             leaveRequestManager.addLeaveRequest(leaveRequest3);
             leaveRequestManager.addLeaveRequest(leaveRequest4);
+
+            Employee employee1 = new Employee(null,"Hassan","Amine","mohamed@amine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee2 = new Employee(null,"Samir","Hani","samir@hani.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee3 = new Employee(null,"Aziz","Yassine","aziz@yassine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee4 = new Employee(null,"Jamal","Kamal","jamal@kamal.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            employeeManager.addEmployee(employee1);
+            employeeManager.addEmployee(employee2);
+            employeeManager.addEmployee(employee3);
+            employeeManager.addEmployee(employee4);
         };
     }
 }
