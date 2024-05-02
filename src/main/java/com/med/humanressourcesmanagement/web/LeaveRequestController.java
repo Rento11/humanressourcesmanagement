@@ -33,7 +33,7 @@ public class LeaveRequestController {
            pages[i] = i;
        }
        model.addAttribute("pages", pages);
-       model.addAttribute("page", page);
+       model.addAttribute("currentpage", page);
        model.addAttribute("keyword", keyword);
        return "leaveRequestsList";
 
