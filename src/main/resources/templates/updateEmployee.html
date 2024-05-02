@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments Updating</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="p-3 m-2">
+        <div class="card">
+            <div class="card-header">Leave Requests Updating</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <form class="form-inline" action="/updateEmployee" method="post">
+                        <input class="form-control" type="hidden" name="id" th:value="${employee.getId()}">
+                        First Name: <input class="form-control" name="firstName" type="text"
+                                       th:value="${employee.getFirstName()}">
+                        Last Name: <input class="form-control" name="lastName" type="text"
+                                           th:value="${employee.getLastName()}">
+                        Email: <input class = "form-control" name="email" type="email"
+                                      th:value="${employee.getEmail()}">
+                        Phone Number: <input class = "form-control" name="phoneNumber" type="text"
+                                             th:value="${employee.getPhoneNumber()}">
+                        Hire Date: <input class = "form-control" name="hireDate" type="date"
+                                          th:value="${employee.getHireDate()}">
+                        Salary: <input class = "form-control" name="salary" type="number"
+                                       th:value="${employee.getSalary()}">
+                        <br>
+                        <input class="btn btn-primary form-control" type="submit" value="Update">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

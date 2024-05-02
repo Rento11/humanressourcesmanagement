@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees Adding</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container" align="center">
+        <form action="/addEmployee" method="post">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control w-50" id="firstName" name="firstName">
+                <span class="text-danger" th:errors="${employee.firstName}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control w-50" id="lastName" name="lastName">
+                <span class="text-danger" th:errors="${employee.lastName}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control w-50" id="email" name="email">
+                <span class="text-danger" th:errors="${employee.email}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="text" class="form-control w-50" id="phoneNumber" name="phoneNumber">
+                <span class="text-danger" th:errors="${employee.phoneNumber}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="hireDate" class="form-label">Hire Date</label>
+                <input type="date" class="form-control w-50" id="hireDate" name="hireDate">
+                <span class="text-danger" th:errors="${employee.hireDate}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" class="form-control w-50" id="salary" name="salary">
+                <span class="text-danger" th:errors="${employee.salary}"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-control w-50" value="Add">Add</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
