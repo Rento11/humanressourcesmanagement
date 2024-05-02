@@ -13,7 +13,9 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
-public class Employee extends User{
+public class Employee{
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
