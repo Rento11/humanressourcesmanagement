@@ -20,6 +20,16 @@ public class EmployeeController {
     @Autowired
     private EmployeeManager employeeManager;
 
+    @GetMapping("/")
+    public String index_(){
+        return "redirect:/index";
+    }
+
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
     @GetMapping("employeesList")
     public String getEmployees(Model model, @RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "taille", defaultValue = "3") int taille, @RequestParam(name = "search", defaultValue = "") String keyword){
         Page<Employee> employees = employeeManager.searchEmployees(keyword,page, taille);

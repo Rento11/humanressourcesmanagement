@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #007bff; /* Navbar background color */
+}
+
+.navbar-brand {
+    color: #ffffff; /* Navbar brand color */
+}
+
+.navbar .nav-link {
+    color: #ffffff; /* Navbar link color */
+    font-weight: bold;
+}
+
+.navbar .nav-link:hover {
+    color: #f8f9fa; /* Navbar link hover color */
+}
+
+.card {
+    border-radius: 15px; /* Card border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card box shadow */
+}
+
+.footer {
+    background-color: #f8f9fa; /* Footer background color */
+    padding: 20px 0; /* Footer padding */
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #dee2e6; /* Footer border */
+}

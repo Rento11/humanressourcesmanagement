@@ -1,90 +1,86 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html  xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Title Here</title>
+    <title>HR Application - Manage Employees</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-    <style>
-        /* Custom Styles */
-        .navbar {
-            background-color: #007bff; /* Navbar background color */
-        }
-
-        .navbar-brand {
-            color: #ffffff; /* Navbar brand color */
-        }
-
-        .navbar .nav-link {
-            color: #ffffff; /* Navbar link color */
-            font-weight: bold;
-        }
-
-        .navbar .nav-link:hover {
-            color: #f8f9fa; /* Navbar link hover color */
-        }
-
-        .card {
-            border-radius: 15px; /* Card border radius */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card box shadow */
-        }
-
-        .footer {
-            background-color: #f8f9fa; /* Footer background color */
-            padding: 20px 0; /* Footer padding */
-            text-align: center;
-            color: #333;
-            font-size: 14px;
-            border-top: 1px solid #dee2e6; /* Footer border */
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>
-<body>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Your Logo Here</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<body class="bg-gray-100">
+
+<header class="bg-white shadow-sm">
+    <div class="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
+        <a th:href="@{/index}" class="flex items-center space-x-2">
+            <img src="/img/logo.png" alt="Company Logo" class="h-10">
+            <span class="text-xl font-semibold text-gray-900">Human Resources</span>
+        </a>
+        <div class="flex items-center space-x-4">
+            <ul class="flex space-x-4">
+                <li>
+                    <a th:href="@{/index}" class="text-gray-800 hover:text-gray-900">Home</a>
+                </li>
+                <li>
+                    <a th:href="@{/employeesList}" class="text-gray-800 hover:text-gray-900">Employees</a>
+                </li>
+            </ul>
+            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="/img/account.png" alt="user photo">
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{departmentsList}">Departments</a>
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                <ul class="py-2" aria-labelledby="user-menu-button">
+                    <li >
+                        <a th:href="@{/login}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-700 dark:hover:text-white">Log in</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{employeesList}">Employees</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{positionsList}">Positions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{leaveRequestsList}">Leave Request</a>
+                    <li >
+                        <a th:href="@{/logout}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-700 dark:hover:text-white">Log out</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</header>
 
+<div class="card-body">
+    <section layout:fragment="content"></section>
+</div>
 
-    <div class="card">
-        <div class="card-body">
-            <section layout:fragment="content"></section>
+<footer class="bg-white shadow-sm mt-12">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center mb-4 md:mb-0">
+            <img src="/img/logo.png" alt="Company Logo" class="h-14 mr-2">
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div>
+                <h2 class="text-sm font-semibold text-gray-900 uppercase">Resources</h2>
+                <ul class="mt-2 text-gray-700">
+                    <li><a href="#" class="hover:text-gray-600">Documentation</a></li>
+                    <li><a href="#" class="hover:text-gray-600">Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-sm font-semibold text-gray-900 uppercase">Follow Us</h2>
+                <ul class="mt-2 text-gray-700">
+                    <li><a href="#" class="hover:text-gray-600">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-gray-600">Twitter</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-sm font-semibold text-gray-900 uppercase">Legal</h2>
+                <ul class="mt-2 text-gray-700">
+                    <li><a href="#" class="hover:text-gray-600">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-gray-600">Terms of Service</a></li>
+                </ul>
+            </div>
         </div>
     </div>
+</footer>
 
-
-    <footer class="footer mt-4">
-        <div class="container">
-            <p>&copy; Copyright: c 2024</p>
-            <p>Human Resources Management - Casablanca - Morocco</p>
-            <p>Email: contactMA@gmail.com</p>
-        </div>
-    </footer>
-</div>
 </body>
 </html>
