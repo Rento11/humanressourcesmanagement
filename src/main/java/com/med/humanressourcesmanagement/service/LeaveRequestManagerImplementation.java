@@ -1,5 +1,6 @@
 package com.med.humanressourcesmanagement.service;
 
+import com.med.humanressourcesmanagement.dao.entities.Employee;
 import com.med.humanressourcesmanagement.dao.entities.LeaveRequest;
 import com.med.humanressourcesmanagement.dao.repositories.LeaveRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,4 +66,5 @@ public class LeaveRequestManagerImplementation implements LeaveRequestManager {
     public Page<LeaveRequest> searchLeaveRequestByLeaveStatus(String keyword, int page, int taille) {
         return leaveRequestRepository.findLeaveRequestsByStatusContainingIgnoreCase(keyword, PageRequest.of(page,taille));
     }
+
 }

@@ -1,7 +1,9 @@
 package com.med.humanressourcesmanagement.web;
 
 import com.med.humanressourcesmanagement.dao.entities.Employee;
+import com.med.humanressourcesmanagement.service.DepartmentManager;
 import com.med.humanressourcesmanagement.service.EmployeeManager;
+import com.med.humanressourcesmanagement.service.PositionManager;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,10 @@ import java.time.LocalDate;
 public class EmployeeController {
     @Autowired
     private EmployeeManager employeeManager;
+    @Autowired
+    private PositionManager positionManager;
+    @Autowired
+    private DepartmentManager departmentManager;
 
     @GetMapping("/")
     public String index_(){
@@ -47,11 +53,13 @@ public class EmployeeController {
     @GetMapping("/addEmployee")
     public String addEmployeeGet(Model model) {
         model.addAttribute("employee", new Employee());
+        model.addAttribute("positions", positionManager.getAllPositions());
+        model.addAttribute("departments", departmentManager.getAllDepartments());
         return "addEmployee";
     }
 
     @PostMapping("/addEmployee")
-    public String addEmployeePost(Model model, @Valid Employee employee, BindingResult bindingResult) {
+    public String addEmployeePost(@Valid Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addEmployee";
         }
@@ -78,6 +86,18 @@ public class EmployeeController {
             return "error";
         }
     }
+
+    @GetMapping("/employeeDetails")
+    public String employeeDetails(Model model, @RequestParam(name = "id") Integer id) {
+        Employee employee = employeeManager.findEmployeeById(id);
+        if (employee != null) {
+            model.addAttribute("employee", employee);
+            return "employeeDetails";
+        } else {
+            return "error";
+        }
+    }
+
 
     @PostMapping("/updateEmployee")
     public String updateEmployeePost(Model model, @RequestParam(name = "id") Integer id, @RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName, @RequestParam(name="email") String email, @RequestParam(name ="phoneNumber") String phoneNumber, @RequestParam(name = "hireDate") LocalDate hireDate, @RequestParam(name="salary") double salary) {

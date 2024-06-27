@@ -24,26 +24,25 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 w-full max-w-4xl mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
             <a th:href="@{/employeesList}" class="bg-white p-6 rounded-lg shadow-md transition duration-300 hover:bg-gray-200 flex flex-col items-center h-48">
-                <svg class="w-12 h-12 mb-2 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M17 9V7h-2V5H5v2H3v2H1v8h4v-4h2v4h6v-4h2v4h4V9h-2zM5 5h10v2H5V5zm8 8h2v2h-2v-2z"/>
-                </svg>
+                <img src="/img/employe.png" class="w-12 h-12 mb-2" alt="Employees">
                 <h4 class="text-2xl font-semibold mb-2">Employees</h4>
             </a>
             <a th:href="@{/departmentsList}" class="bg-white p-6 rounded-lg shadow-md transition duration-300 hover:bg-gray-200 flex flex-col items-center h-48">
-                <svg class="w-12 h-12 mb-2 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M6 2v8h4v8l4-16H6z"/>
-                </svg>
+                <img src="/img/department.png" class="w-12 h-12 mb-2" alt="Departments">
                 <h4 class="text-2xl font-semibold mb-2">Departments</h4>
             </a>
             <a th:href="@{/leaveRequestsList}" class="bg-white p-6 rounded-lg shadow-md transition duration-300 hover:bg-gray-200 flex flex-col items-center h-48">
-                <svg class="w-12 h-12 mb-2 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M18 2H2a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V4a2 2 0 00-2-2zm-8 13H6v-2h4v2zm4-4H6v-2h8v2zm0-4H6V5h8v2z"/>
-                </svg>
+                <img src="/img/request.png" class="w-12 h-12 mb-2" alt="Leave Requests">
                 <h4 class="text-2xl font-semibold mb-2">Leave Requests</h4>
             </a>
+            <a th:href="@{/positionsList}" class="bg-white p-6 rounded-lg shadow-md transition duration-300 hover:bg-gray-200 flex flex-col items-center h-48">
+                <img src="/img/position.png" class="w-12 h-12 mb-2" alt="Positions">
+                <h4 class="text-2xl font-semibold mb-2">Positions</h4>
+            </a>
         </div>
+
 
         <div id="about" class="bg-white p-8 rounded-lg shadow-md mb-12 w-full max-w-4xl">
             <div class="flex flex-col md:flex-row">
@@ -52,8 +51,8 @@
                 </div>
                 <div class="md:w-1/2 md:pl-8">
                     <h2 class="text-3xl font-semibold mb-4">About</h2>
-                    <p class="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis, velit at viverra eleifend, dolor est scelerisque odio.</p>
-                    <p class="text-gray-700">Etiam varius ligula eu purus pulvinar, nec fringilla eros finibus. Nullam vel fringilla nisi, ac ullamcorper purus. Suspendisse varius velit sit amet vestibulum faucibus.</p>
+                    <p class="text-gray-700">We aim to support HR professionals in making data-driven decisions that benefit both the company and its employees.</p><br>
+                    <p class="text-gray-700 mb-4">We are dedicated to revolutionizing the way businesses manage their human resources. Our comprehensive HR application is designed to streamline HR processes, enhance employee engagement, and drive organizational efficiency.</p>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ package com.med.humanressourcesmanagement.web;
 
 import com.med.humanressourcesmanagement.dao.entities.Department;
 import com.med.humanressourcesmanagement.dao.entities.LeaveRequest;
+import com.med.humanressourcesmanagement.service.EmployeeManager;
 import com.med.humanressourcesmanagement.service.LeaveRequestManager;
 import com.med.humanressourcesmanagement.service.LeaveRequestManagerImplementation;
 import jakarta.validation.Valid;
@@ -24,8 +25,9 @@ public class LeaveRequestController {
     @Autowired
     private LeaveRequestManager leaveRequestManager;
 
-    @GetMapping("leaveRequestsList")
-    public String leaveRequestsList(Model model, @RequestParam(name = "page", defaultValue = "0")int page,@RequestParam(name = "taille", defaultValue = "3")int taille, @RequestParam(name="search", defaultValue = "")String keyword ){
+
+    @GetMapping("/leaveRequestsList")
+    public String leaveRequestsList(Model model, @RequestParam(name = "page", defaultValue = "0")int page,@RequestParam(name = "taille", defaultValue = "3")int taille, @RequestParam(name="search", defaultValue = "")String keyword){
        Page<LeaveRequest> leaveRequests = leaveRequestManager.searchLeaveRequestByLeaveStatus(keyword,page,taille);
        model.addAttribute("leaveRequests", leaveRequests.getContent());
        int[] pages = new int[leaveRequests.getTotalPages()];
@@ -33,7 +35,7 @@ public class LeaveRequestController {
            pages[i] = i;
        }
        model.addAttribute("pages", pages);
-       model.addAttribute("currentpage", page);
+       model.addAttribute("currentPage", page);
        model.addAttribute("keyword", keyword);
        return "leaveRequestsList";
 
@@ -46,7 +48,7 @@ public class LeaveRequestController {
     }
 
     @PostMapping("/addLeaveRequest")
-    public String addLeaveRequest(Model model, @Valid  LeaveRequest leaveRequest, BindingResult bindingResult) {
+    public String addLeaveRequest(@Valid  LeaveRequest leaveRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addLeaveRequest";
         }

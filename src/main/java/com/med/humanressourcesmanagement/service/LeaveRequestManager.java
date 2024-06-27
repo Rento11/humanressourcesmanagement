@@ -1,5 +1,6 @@
 package com.med.humanressourcesmanagement.service;
 
+import com.med.humanressourcesmanagement.dao.entities.Employee;
 import com.med.humanressourcesmanagement.dao.entities.LeaveRequest;
 import org.springframework.data.domain.Page;
 

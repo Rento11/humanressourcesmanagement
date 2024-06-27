@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootApplication
 public class HumanressourcesmanagementApplication {
@@ -46,6 +47,7 @@ public class HumanressourcesmanagementApplication {
             departmentManager.addDepartment(department4);
             departmentManager.addDepartment(department5);
             departmentManager.addDepartment(department6);
+
             Position position1 = new Position(null,"FINANCE Manager","Responsible for financial planning and reporting.",null);
             Position position2 = new Position(null,"Senior Auditor","Conduct audits and ensure compliance with regulations.",null);
             Position position3 = new Position(null,"Marketing Specialist","Develop marketing strategies and execute campaigns.",null);
@@ -54,6 +56,15 @@ public class HumanressourcesmanagementApplication {
             positionManager.addPosition(position2);
             positionManager.addPosition(position3);
             positionManager.addPosition(position4);
+
+            Employee employee1 = new Employee(null,"Hassan","Amine","mohamed@amine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee2 = new Employee(null,"Samir","Hani","samir@hani.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee3 = new Employee(null,"Aziz","Yassine","aziz@yassine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            Employee employee4 = new Employee(null,"Jamal","Kamal","jamal@kamal.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+            employeeManager.addEmployee(employee1);
+            employeeManager.addEmployee(employee2);
+            employeeManager.addEmployee(employee3);
+            employeeManager.addEmployee(employee4);
 
             LeaveRequest leaveRequest1 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
             LeaveRequest leaveRequest2 = new LeaveRequest(null, LocalDate.of(2024,05,01),LocalDate.of(2024,05,10),"pending",null);
@@ -64,14 +75,43 @@ public class HumanressourcesmanagementApplication {
             leaveRequestManager.addLeaveRequest(leaveRequest3);
             leaveRequestManager.addLeaveRequest(leaveRequest4);
 
-            Employee employee1 = new Employee(null,"Hassan","Amine","mohamed@amine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
-            Employee employee2 = new Employee(null,"Samir","Hani","samir@hani.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
-            Employee employee3 = new Employee(null,"Aziz","Yassine","aziz@yassine.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
-            Employee employee4 = new Employee(null,"Jamal","Kamal","jamal@kamal.com","012345643",LocalDate.of(2024,05,01),10000.0,null,null,null);
+
+            employee1.setDepartment(department1);
+            employee2.setDepartment(department2);
+            employee3.setDepartment(department3);
+            employee4.setDepartment(department4);
+
+            employee1.setPosition(position1);
+            employee2.setPosition(position2);
+            employee3.setPosition(position3);
+            employee4.setPosition(position4);
+
             employeeManager.addEmployee(employee1);
             employeeManager.addEmployee(employee2);
             employeeManager.addEmployee(employee3);
             employeeManager.addEmployee(employee4);
+
+
+            department1.setEmployees(List.of(employee1));
+            department2.setEmployees(List.of(employee2));
+            department3.setEmployees(List.of(employee3));
+            department4.setEmployees(List.of(employee4));
+            departmentManager.addDepartment(department1);
+            departmentManager.addDepartment(department2);
+            departmentManager.addDepartment(department3);
+            departmentManager.addDepartment(department4);
+
+
+            position1.setEmployee(employee1);
+            position1.setEmployee(employee2);
+            position1.setEmployee(employee3);
+            position1.setEmployee(employee4);
+            positionManager.addPosition(position1);
+            positionManager.addPosition(position2);
+            positionManager.addPosition(position3);
+            positionManager.addPosition(position4);
+
+
         };
     }
 }

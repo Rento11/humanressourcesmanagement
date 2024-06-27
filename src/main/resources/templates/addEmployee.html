@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Employees Adding</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -42,6 +45,18 @@
                 <label for="salary" class="form-label">Salary</label>
                 <input type="number" class="form-control w-50" id="salary" name="salary">
                 <span class="text-danger" th:errors="${employee.salary}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="position" class="form-label">Position</label>
+                <select class="form-select w-50" id="position" name="position">
+                    <option th:each="position : ${positions}" th:value="${position.getId()}" th:text="${position.getName()}">Position Name</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select w-50" id="department" name="department">
+                    <option th:each="department : ${departments}" th:value="${department.getId()}" th:text="${department.getName()}">Department Name</option>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary form-control w-50" value="Add">Add</button>
